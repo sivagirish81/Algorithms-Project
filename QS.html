@@ -1,0 +1,187 @@
+<html>
+	<head>
+		<title>Algorithms</title>
+		<style>
+			ul  { list-style-type: none;padding:12px 0px; }
+			
+			ul  li {position:relative; border:1px solid gray; display:inline-block; width:36px; height:36px; 
+			text-align:center; line-height:36px;margin-left:5px; border-radius: 18px;background-color:blue}
+			.swapper{bgcolor:blue;}
+			#swapper{bgcolor:red;}
+			.changer{border:1 px blue;}
+			#changer{border:1 px red;}
+		</style>
+		<script type="text/javascript">
+		<!--
+			var A;
+			var Timer1;
+			var NumSpanner;
+			var Numbers;
+			var x;
+			var Nums;
+			var st = "style='background-color:white'";
+			function Sorter()
+			{
+				A=[79,56,19,44,86,22,41,35,39,99,16,53,29,26,11,49,65,33,51,83];
+				var Speed=parseInt(SelSpeed.options[SelSpeed.selectedIndex].value);
+				var algo=parseInt(SelAlgo.options[SelAlgo.selectedIndex].value);
+				var NumSpanner=A.map(function(num){
+					return "<span>"+num+"</span>";
+					});
+				console.log(NumSpanner);
+				//Numspanner=Array.from(NumSpanner);
+				NumSpanner=JSON.stringify(NumSpanner);
+				//NumSpanner=NumSpanner.from(NumSpanner);
+				console.log(typeof(NumSpanner));
+				console.log(NumSpanner);
+				if (Timer1) clearInterval(Timer1);
+					if (algo == 0)
+						Timer1 = setInterval(QuickSort1(NumSpanner,A,0,A.length-1),Speed); 
+					else
+						Timer1 = setInterval(QuickSort1(A,0,A.length-1),Speed);  
+			}
+			
+			function QuickSort1(NumSpanner,A,low,high)
+			{
+				if (low<high)
+				{
+					outputer(NumSpanner);
+					NumSpanner=process_array(NumSpanner);
+					var s=Partition(NumSpanner,A,low,high);
+					console.log(s);
+					QuickSort1(NumSpanner,A,low,s-1);
+					QuickSort1(NumSpanner,A,s+1,high);
+				}
+				console.log(A);
+			}
+
+			function Partition(NumSpanner,A,l,h)
+			{
+				var pivot=A[l];
+				var i=l+1;
+				var j=h;
+				while (i<j)
+				{
+					while (A[i]<pivot && i<=h)
+					{
+						i++;
+					}
+					while (A[j]>pivot && j>=l)
+					{
+						j--;
+					}
+					changer(NumSpanner,i,j);
+					if (i<j)
+					{
+						var temp=A[j];
+						
+						A[j]=A[i];
+						
+						A[i]=temp;
+						
+						swapper(NumSpanner,i,j);
+					}
+				}
+				if (A[j]<A[l])
+				{
+					var temp=A[j];
+					
+					A[j]=A[l];
+					
+					A[l]=temp;
+					
+					swapper(NumSpanner,j,l);
+				}
+				return j;
+			}
+			function changer(NumSpanner,i,j)
+			{
+				console.log("Changer");
+				console.log(NumSpanner);
+				//var temp1=NumSpanner[j];
+				//NumSpanner[j]=NumSpanner[i];
+				//NumSpanner[i]=temp1;
+				var t=process_array(NumSpanner);
+				console.log(t);
+				t.forEach(function(element, index, array){
+				// Check for the particular array elements in question
+				if(index == i || index == j){
+				// Update those strings to include the CSS
+				array[index] = element.replace("<span id='changer'>","<span class='changer'>");
+				}
+				});
+			}
+			function swapper(NumSpanner,j,l)
+			{
+				var temp1=NumSpanner[j];
+				NumSpanner[j]=NumSpanner[l];
+				NumSpanner[l]=temp1;
+				var t=process_array(NumSpanner);
+				//console.log(x);
+				t.forEach(function(element, index, array){
+				// Check for the particular array elements in question
+				if(index === l || index === j){
+				// Update those strings to include the CSS
+				array[index] = element.replace("<span id='swapper'>","<span class='swapper'>");
+				}
+				});
+			}
+				
+			function outputer(x)
+			{
+				/*
+				console.log(typeof(NumSpanner));
+				console.log(NumSpanner);
+				var Nums=NumSpanner.slice(1,NumSpanner.length-1);
+				Nums=Nums.split(",");
+				console.log(Nums);
+				var x="";
+				for (var i=0;i<Nums.length;i++)
+				{
+					Nums[i]=Nums[i].replace(/^"(.+)"$/,'$1');
+					x+="<li>"+Nums[i]+"</li>";
+				}
+				console.log(Nums);
+				//console.log(Numbers);*/
+				var theDiv = document.getElementById('Output');
+				theDiv.innerHTML ="<ul>"+x+"</ul>";
+			}
+			
+			function process_array(NumSpanner)
+			{
+				var Nums=NumSpanner.slice(1,NumSpanner.length-1);
+				Nums=Nums.split(",");
+				console.log(Nums);
+				var x="";
+				for (var i=0;i<Nums.length;i++)
+				{
+					Nums[i]=Nums[i].replace(/^"(.+)"$/,'$1');
+					x+="<li>"+Nums[i]+"</li>";
+				}
+				return Nums;
+			}
+		-->
+		</script>
+	</head>
+	<body>
+		<h1>Animation of  Quick Sort based Sorting Algorithms</h1>
+		 
+		<label>Speed <select id="SelSpeed" >
+		<option  value="2000" >slow</option>
+		<option  value="600" >medium</option>
+		<option  value="100" >fast</option>
+		</select>
+		</label>
+
+		<label>Algorithm <select id="SelAlgo" >
+		<option  value="0" >Quick Sort 1</option>
+		<option  value="1" >Quick Sort 2</option>
+		</select>
+		</label>
+
+		<input type="button" value="Start"  onclick="Sorter()" />
+		  
+		<div  id="Output" > 
+		</div>
+	</body>
+	
