@@ -174,7 +174,7 @@ void quickSortH(long int arr[], long int low, long int high)
 { 
     if (low < high) 
 	{ 
-        long int pivot = partition_r(arr, low, high); 
+        long int pivot = partitionerH(arr, low, high); 
         quickSortH(arr, low, pivot); 
         quickSortH(arr, pivot + 1, high); 
     } 
