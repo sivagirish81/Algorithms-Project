@@ -1,8 +1,9 @@
 #include <stdlib.h>
+#include "header.h"
+
 
 void arrange(char* input, int n)
 {
-//assume input is 2n+2
     if(n==3)
     {
         input = (char*)realloc(input, (2*n+5)*sizeof(char));
