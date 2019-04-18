@@ -43,14 +43,14 @@ def Create_input(size,fname):
             Input.write('{}\n'.format(str(x)))
         Input.close()
 
-fname=input("Enter name of input file")
-size=int(input("Enter size of input required"));
+fname=input("Enter name of input file:")
+size=int(input("Enter size of input required:"));
 print("Types Of input Available:")
 print("1-Random")
 print("2-Sorted in ascending Order")
 print("3-sorted indescending order")
 print("4-Create your own input");
-i=int(input("Enter your choice"))
+i=int(input("Enter your choice:"))
 if (i==1):
     Random_generator(size,fname)
 elif (i==2):

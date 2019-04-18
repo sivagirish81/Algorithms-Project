@@ -77,9 +77,9 @@ long int partitionF(long int *arr,long int l,long int h)
 	long int j=h;
 	while (i<j)
 	{
-		while (arr[i]<pivot && i<=h)
+		while (arr[i]<pivot && i<h)
 			i++;
-		while (arr[j]>pivot && j>=l)
+		while (arr[j]>pivot && j>l)
 			j--;
 		if (i<j)
 			swap(arr,j,i);
@@ -140,43 +140,43 @@ void quickSortL(long int arr[], long int low, long int high)
 +Hoare Method of Parttioning
 */
 
-long int partitionH(long int arr[], long int low, long int high) 
+long int partitionH(long int arr[],long int low,long int high) 
 { 
     long int pivot = arr[low]; 
-    long int i = low - 1, j = high + 1; 
-  
-    while (1) { 
-        do 
-		{ 
-            i+=1; 
+    long int i = low - 1;
+	long int j = high + 1; 
+	//long int count=(low+high)*(low+high);
+	//long int t=0;
+    while (1) 
+	{ 
+        do { 
+            i++; 
         } while (arr[i] < pivot); 
-		
-        do 
-		{ 
-            j-=1; 
+        do { 
+            j--; 
         } while (arr[j] > pivot);  
         if (i >= j) 
             return j; 
   
         swap(arr,i,j); 
+		
     } 
 } 
- 
-long int partitionerH(long int arr[], long int low, long int high) 
+   
+long int partitionerH(long int arr[],long int low,long int high) 
 { 
-    //srand(time(NULL)); 
+    srand(time(NULL)); 
     long int random = low + rand() % (high - low);  
     swap(arr,random,low); 
     return partitionH(arr, low, high); 
 } 
-
+  
 void quickSortH(long int arr[], long int low, long int high) 
 { 
-    if (low < high) 
-	{ 
-        long int pivot = partitionerH(arr, low, high); 
-        quickSortH(arr, low, pivot); 
-        quickSortH(arr, pivot + 1, high); 
+    if (low < high) { 
+        long int pi = partitionerH(arr, low, high); 
+        quickSortH(arr, low, pi); 
+        quickSortH(arr, pi + 1, high); 
     } 
 } 
 
@@ -224,16 +224,18 @@ int main()
 	}
 	*/
 	long int temp=arr;
-    
-    
+    /*Last Element Pivot*/
 	clock_t t;
 	t = clock();
 	quickSort(arr,0,size-1);
 	t = clock() - t; 
 	double time_taken = ((double)t)/CLOCKS_PER_SEC;
-	fp=fopen("Output/1.txt","w");
+	//fp=fopen("Output/1.txt","w");
 	Writer(arr,size,time_taken);
 	
+	h=0;
+	/*Lomuto Partition*/
+	/*
 	while((ch = fscanf(fp,"%d",&arr[h])) != EOF && h<size )
        {
 		   h+=1;
@@ -244,6 +246,9 @@ int main()
 	time_taken = ((double)t)/CLOCKS_PER_SEC;
 	Writer(arr,size,time_taken);
 	
+	h=0;
+	*/
+	/*First Element Pivot
 	while((ch = fscanf(fp,"%d",&arr[h])) != EOF && h<size )
        {
 		   h+=1;
@@ -253,7 +258,9 @@ int main()
 	t = clock() - t; 
 	time_taken = ((double)t)/CLOCKS_PER_SEC;
 	Writer(arr,size,time_taken);
-	
+	*/
+	h=0;
+	/*Hoare Partition*/
 	while((ch = fscanf(fp,"%d",&arr[h])) != EOF && h<size )
        {
 		   h+=1;
