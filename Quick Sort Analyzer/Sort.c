@@ -124,8 +124,8 @@ long int partitionH(long int arr[],long int low,long int high)
 long int partitionerH(long int arr[],long int low,long int high) 
 { 
     //srand(time(NULL)); 
-    long int random = low + rand() % (high - low);  
-    swap(arr,random,low); 
+    long int r = low + rand() % (high - low);  
+    swap(arr,r,low); 
     return partitionH(arr, low, high); 
 } 
   

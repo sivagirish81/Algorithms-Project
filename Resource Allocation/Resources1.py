@@ -12,11 +12,18 @@ Output:The number of resources to be allocated to each project inorder to get ma
 Providing extra Resources to a project will result in a no extra profit.(optional)
 
 """
+def getMaxProfit( arr, JR,W, n): 
+    dp = [0 for i in range(W + 1)] 
+    ans = 0
+    wt=
+    for i in range(W + 1): 
+        for j in range(n): 
+            if (wt[j] <= i): 
+                dp[i] = max(dp[i], dp[i - wt[j]] + val[j]) 
+    return dp[W]
 
-"""
-Constraints Faced
-+The same number of resources cannot be allocated two two projects except in the case of no resources at all.
-"""
+def getMaxProfitter(arr, JR,W, n):
+    for 
 def Remduplicates(d): 
     f=[]
     for i in d: 
@@ -38,24 +45,7 @@ def permutation(permutations):
            l.append([m] + p) 
     return l 
 
-def split(x, n): 
-    if(x < n):  
-        return -1 
-    elif (x % n == 0): 
-        for i in range(n): 
-            print(x//n, end =" ") 
-    else: 
-        # upto n-(x % n) the values  
-        # will be x / n  
-        # after that the values  
-        # will be x / n + 1 
-        zp = n - (x % n) 
-        pp = x//n 
-        for i in range(n): 
-            if(i>= zp): 
-                print(pp + 1, end =" ") 
-            else: 
-                print(pp, end =" ")
+ 
 
 def getPossibilities(res,m,n):
     l=len(res)
@@ -64,7 +54,8 @@ def getPossibilities(res,m,n):
             if (len(i)<(m)):
                 i.append(0)
             else:
-                break       
+                break
+            
     #print(res)
     p=[]
     for i in res:
@@ -72,48 +63,6 @@ def getPossibilities(res,m,n):
             p.append(k)
     return p
     
-def getAllSubsetsRec(arr, n, v, sum,res) :  
-    if (sum == 0) : 
-        #print(v)
-        res.append(v)
-        return 
-    if (n == 0): 
-        return 
-    getAllSubsetsRec(arr, n - 1, v, sum,res) 
-    v1 = [] + v 
-    v1.append(arr[n - 1]) 
-    getAllSubsetsRec(arr, n-1, v1, sum - arr[n - 1],res) 
-  
- 
-def getAllSubsets(arr, n, sum,res): 
-    v = [] 
-    getAllSubsetsRec(arr, n, v, sum,res) 
-
-def getMaxProfit(JR,res,m,n):
-    x=getPossibilities(res,m,n)
-    x=Remduplicates(x)
-    print(x)
-    maximum=0
-    maxpath=[]
-    print("Possible Ways of allocating Resources are:")
-    k=0
-    a=[]
-    for i in x:
-        tot=0
-        a=[]
-        for j in range(m):
-            tot+=JR[j][i[j]]
-            a.append(JR[j][i[j]])
-            #print(JR[j][i[j]],end="")
-            print(i[j],end="")
-            print("->",end="")
-        print("=",tot)
-        print()
-        if (tot>maximum):
-            maxpath=[]
-            maximum=tot
-            maxpath=i
-    return maxpath
 
 #Main Function    
 #JR=[[100,150,175,175,175,175],[120,135,140,147,147,147],[80,105,105,105,105,105]]
@@ -126,14 +75,14 @@ JR=[]
 for line in lines:
     JR.append([int(l) for l in line])
 
-#print(JR)
+print(JR)
 
 
 #arr = [0,1,2,3,4,5]
 m=len(JR)
 print(m)
 n=len(JR[0])
-arr=[u for u in range(n)]
+arr=[u for u in range(n) for u in range(n)]
 print(arr)
 #sum = 5
 sum=n-1
@@ -141,8 +90,8 @@ res=[]
 n = len(arr) 
 getAllSubsets(arr, n, sum,res)
 #print(res)
-result=getMaxProfit(JR,res,m,n)
-#print(result)
+result=getMaxProfitter(JR,res,m,n)
+print(result)
 print("The Method of allocating resources which gives the maximum profit is ")
 for i in result:
     print(i,end="")
@@ -150,8 +99,8 @@ for i in result:
 fin=0
 #print(JR)
 for j in range(m):
-    fin+=JR[j][result[j]]
-    #i+=1
+    fin+=JR[j][result[i]]
+    i+=1
     #print(fin)
 print(fin)
 
