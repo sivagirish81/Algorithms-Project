@@ -1,6 +1,4 @@
-# Python program to print all subsets with given sum 
-  
-# The vector v stores current subset.
+
 """
 
 We have n units of a resource to be allocated to r projects. n and r are
