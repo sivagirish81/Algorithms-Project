@@ -77,9 +77,9 @@ long int partitionF(long int *arr,long int l,long int h)
 	long int j=h;
 	while (i<j)
 	{
-		while (arr[i]<pivot && i<h)
+		while (arr[i]<pivot && i<=h)
 			i++;
-		while (arr[j]>pivot && j>l)
+		while (arr[j]>pivot && j>=l)
 			j--;
 		if (i<j)
 			swap(arr,j,i);
@@ -186,7 +186,7 @@ void Writer(long int arr[],long int size,double time)
 	char outnum[1000];
 	scanf("%[^\n]%*c", outnum);
 	FILE* nfp=fopen(outnum,"w");
-	char* str=(char*)malloc(sizeof(char*));
+	char* str=(char*)malloc(100*sizeof(char*));
 	for (int i=0;i<size;i++)
 	{
 		sprintf(str,"%d",arr[i]);
@@ -196,6 +196,7 @@ void Writer(long int arr[],long int size,double time)
 	sprintf(str,"%f",time);
 	fputs(str,nfp);
 	fclose(nfp);
+	return;
 }
 
 int main()
@@ -217,6 +218,7 @@ int main()
        {
 		   h+=1;
        }
+	   fclose(fp);
 	/*
 	for (int k=0;k<size;k++)
 	{
@@ -235,7 +237,7 @@ int main()
 	
 	h=0;
 	/*Lomuto Partition*/
-	/*
+	printf("I'm Free");
 	while((ch = fscanf(fp,"%d",&arr[h])) != EOF && h<size )
        {
 		   h+=1;
@@ -244,21 +246,39 @@ int main()
 	quickSortL(arr,0,size-1);
 	t = clock() - t; 
 	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf("*****");
+	for (int i=0;i<size;i++)
+	   {
+		   printf("%d ",arr[i]);
+	   }
 	Writer(arr,size,time_taken);
 	
 	h=0;
-	*/
-	/*First Element Pivot
+	
+	/*First Element Pivot*/
+	fp=fopen(path,"r");
+	ch = fscanf(fp,"%d",&arr[h]);
 	while((ch = fscanf(fp,"%d",&arr[h])) != EOF && h<size )
        {
 		   h+=1;
        }
+	   fclose(fp);
+	   /*
+	   for (int i=0;i<size;i++)
+	   {
+		   printf("%d ",arr[i]);
+	   }*/
 	t = clock();
 	QuickSortF(arr,0,size-1);
+	/*
+	for (int i=0;i<size;i++)
+	   {
+		   printf("%d ",arr[i]);
+	   }*/
 	t = clock() - t; 
 	time_taken = ((double)t)/CLOCKS_PER_SEC;
 	Writer(arr,size,time_taken);
-	*/
+	
 	h=0;
 	/*Hoare Partition*/
 	while((ch = fscanf(fp,"%d",&arr[h])) != EOF && h<size )
@@ -267,9 +287,16 @@ int main()
        }
 	t = clock();
 	quickSortH(arr,0,size-1);
+	printf("+++++");
+	/*
+	for (int i=0;i<size;i++)
+	   {
+		   printf("%d ",arr[i]);
+	   }*/
 	t = clock() - t; 
 	time_taken = ((double)t)/CLOCKS_PER_SEC;
 	Writer(arr,size,time_taken);
+	
 }
 
 	
