@@ -10,15 +10,30 @@ def enumerate(a,n_balls,n_boxes):
         for b in range(n_balls+1):
             a[n_boxes-1] = b
             enumerate(a,n_balls-b,n_boxes-1)
-a=[0,0]
+
+
+path=input("Enter Input File Name:");
+fpath="Input/"+path+".txt"
+with open(fpath) as textFile:
+    lines = [line.split() for line in textFile]
+
+P=[]
+for line in lines:
+    P.append([int(l) for l in line])
+print(P)
+
+#P = [[0,1,2,100],[0,0,0,0]]
+r=len(P)
+n=len(P[0])
+a=[0 for i in range(r)]
 combs = []
-enumerate(a,3,2)
+enumerate(a,n-1,r)
 
 res = -1
 
 max = 0
 
-P = [[0,1,2,100],[0,0,0,0]]
+#P = [[0,1,2,100],[0,0,0,0]]
 
 
 
