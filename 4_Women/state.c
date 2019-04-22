@@ -223,6 +223,8 @@ void set_state(state_t *ptr_state, int one, int two, int five, int ten, int flas
 }
 
 int is_safe(const state_t* ptr_state)
+//all one's , two's, five's and ten's should be either 1 or 0 and
+//there should not be a case that flash light is on the other side and all people are on the other
 {
 	return (((ptr_state->one==0 || ptr_state->one==1) && ( ptr_state->two==0 || ptr_state->two==1 )&&
 			 (ptr_state->five==0 || ptr_state->five==1) && (ptr_state->ten==0 || ptr_state->ten==1)) &&
@@ -232,6 +234,7 @@ int is_safe(const state_t* ptr_state)
 }
 
 int are_same(const state_t *lhs, const state_t *rhs)
+//same fields but fn_index
 {
 	return lhs->one == rhs->one && lhs->two == rhs->two && lhs->five == rhs->five && lhs->ten == rhs->ten && lhs->flash == rhs->flash;
 }

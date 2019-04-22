@@ -9,7 +9,7 @@ struct state
 	int ten;  // whether the woman who can cross bridge in 10 minute is on left or not
 
 	int flash; //1 - flashlight is on left side  0 - on right
-	// implementation field
+	
 	int fn_index;
 };
 typedef struct state state_t;
