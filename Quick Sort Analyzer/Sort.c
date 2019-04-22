@@ -55,7 +55,17 @@ void quickSort(long int arr[],long int low,long int high)
     } 
 } 
 
-/*Method 3
+
+
+void swap(long int *arr,long int x,long int y)
+{
+	long int temp;
+	temp=arr[x];
+	arr[x]=arr[y];
+	arr[y]=temp;
+}
+
+/*Method 2
 +Lomuto Method of Partitioning
 */
 long int partitionL(long int arr[], long int low, long int high) 
@@ -94,7 +104,7 @@ void quickSortL(long int arr[], long int low, long int high)
     } 
 }  
 
-/*Method 4
+/*Method 3
 +Hoare Method of Parttioning
 */
 
@@ -123,9 +133,9 @@ long int partitionH(long int arr[],long int low,long int high)
    
 long int partitionerH(long int arr[],long int low,long int high) 
 { 
-    //srand(time(NULL)); 
-    long int r = low + rand() % (high - low);  
-    swap(arr,r,low); 
+    srand(time(NULL)); 
+    long int random = low + rand() % (high - low);  
+    swap(arr,random,low); 
     return partitionH(arr, low, high); 
 } 
   
@@ -155,7 +165,6 @@ void Writer(long int arr[],long int size,double time)
 	fputs(str,nfp);
 	fclose(nfp);
 	return;
-	
 }
 
 int main()
@@ -170,7 +179,6 @@ int main()
 	long int size;
 	fscanf(fp,"%d",&size);
 	printf("%li\n",size);
-	long int temp[size];
 	long int h=0;
 	char *ch=(char*)malloc(sizeof(char*));
 	long int arr[size];
@@ -178,48 +186,44 @@ int main()
        {
 		   h+=1;
        }
-	   for (long int i=0;i<size;i++)
-	   {
-		   temp[i]=arr[i];
-	   }
-	
+	   fclose(fp);
+	long int temp=arr;
     /*Last Element Pivot*/
 	clock_t t;
 	t = clock();
 	quickSort(arr,0,size-1);
 	t = clock() - t; 
 	double time_taken = ((double)t)/CLOCKS_PER_SEC;
+	//fp=fopen("Output/1.txt","w");
 	Writer(arr,size,time_taken);
-	for (long int i=0;i<size;i++)
-	   {
-		   arr[i]=temp[i];
-	   }
+	
+	h=0;
 	/*Lomuto Partition*/
+	while((ch = fscanf(fp,"%d",&arr[h])) != EOF && h<size )
+       {
+		   h+=1;
+       }
 	t = clock();
 	quickSortL(arr,0,size-1);
 	t = clock() - t; 
 	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	Writer(arr,size,time_taken);
+	
+	//h=0;
+	
+	h=0;
+	/*Hoare Partition*/
+	while((ch = fscanf(fp,"%d",&arr[h])) != EOF && h<size )
+       {
+		   h+=1;
+       }
+	t = clock();
+	quickSortH(arr,0,size-1);
 	/*
 	for (int i=0;i<size;i++)
 	   {
 		   printf("%d ",arr[i]);
-	   }
-	   printf("fdbjbgjba");*/
-	Writer(arr,size,time_taken);
-	/*Hoare Partition*/
-	   for (long int i=0;i<size;i++)
-	   {
-		   arr[i]=temp[i];
-	   }
-	t = clock();
-	quickSortH(arr,0,size-1);
-	/*
-	printf("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%QuickSortH%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n");
-	   for (int i=0;i<size;i++)
-	   {
-		   printf("%d\n ",arr[i]);
-	   }
-	   printf("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n");*/
+	   }*/
 	t = clock() - t; 
 	time_taken = ((double)t)/CLOCKS_PER_SEC;
 	Writer(arr,size,time_taken);

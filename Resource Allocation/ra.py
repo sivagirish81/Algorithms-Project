@@ -47,6 +47,17 @@ for i in range(len(combs)):
         max = sum
      
 
-
-print(combs[res])        
+k=0
+print(combs[res])
+for i in combs[res]:
+    if (k<r):
+        print("Allocate Project {} with {} resources.".format(str(k+1),str(i)))
+        k+=1
+su=0
+k=0
+for i in combs[res]:
+    if (k<r):
+        su+=P[k][i]
+        k+=1
+print("Total Profit gained:",su)
         
