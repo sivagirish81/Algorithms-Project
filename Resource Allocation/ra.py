@@ -1,6 +1,6 @@
 import copy
 
-def enumerate(a,n_balls,n_boxes):
+def generate(a,n_balls,n_boxes):
     if n_boxes<=0:
         return -1
     elif n_boxes==1:
@@ -9,7 +9,7 @@ def enumerate(a,n_balls,n_boxes):
     else:
         for b in range(n_balls+1):
             a[n_boxes-1] = b
-            enumerate(a,n_balls-b,n_boxes-1)
+            generate(a,n_balls-b,n_boxes-1)
 
 
 path=input("Enter Input File Name:");
@@ -27,7 +27,7 @@ r=len(P)
 n=len(P[0])
 a=[0 for i in range(r)]
 combs = []
-enumerate(a,n-1,r)
+generate(a,n-1,r)
 
 res = -1
 

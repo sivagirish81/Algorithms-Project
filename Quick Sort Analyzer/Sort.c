@@ -157,7 +157,7 @@ void Writer(long int arr[],long int size,double time)
 	char* str=(char*)malloc(100*sizeof(char*));
 	for (int i=0;i<size;i++)
 	{
-		sprintf(str,"%d",arr[i]);
+		sprintf(str,"%li",arr[i]);
 		fputs(str,nfp);
 		fputs("\n",nfp);
 	}
@@ -177,17 +177,18 @@ int main()
 	FILE* fp;
 	fp=fopen(path,"r");
 	long int size;
-	fscanf(fp,"%d",&size);
+	fscanf(fp,"%li",&size);
 	printf("%li\n",size);
 	long int h=0;
-	char *ch=(char*)malloc(sizeof(char*));
+	//char *ch=(char*)malloc(sizeof(char*));
+	int ch;
 	long int arr[size];
-	while((ch = fscanf(fp,"%d",&arr[h])) != EOF && h<size )
+	while((ch = fscanf(fp,"%li",&arr[h])) != EOF && h<size )
        {
 		   h+=1;
        }
 	   fclose(fp);
-	long int temp=arr;
+	//long int temp=arr;
     /*Last Element Pivot*/
 	clock_t t;
 	t = clock();
@@ -199,7 +200,7 @@ int main()
 	
 	h=0;
 	/*Lomuto Partition*/
-	while((ch = fscanf(fp,"%d",&arr[h])) != EOF && h<size )
+	while((ch = fscanf(fp,"%li",&arr[h])) != EOF && h<size )
        {
 		   h+=1;
        }
@@ -213,7 +214,7 @@ int main()
 	
 	h=0;
 	/*Hoare Partition*/
-	while((ch = fscanf(fp,"%d",&arr[h])) != EOF && h<size )
+	while((ch = fscanf(fp,"%li",&arr[h])) != EOF && h<size )
        {
 		   h+=1;
        }
