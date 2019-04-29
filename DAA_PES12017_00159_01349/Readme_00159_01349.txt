@@ -1,0 +1,72 @@
+Question 1:
+	-We have n units of a resource to be allocated to r projects. n and r are
+integers and resource allocation is in integer units only. If j, 0<=j<=n, units of
+the resource are allocated to project i, then the resulting net profit is P (i,j).
+Design an algorithm to allocate the resource to the r projects so as to
+maximize the total net profit. Analyze its time complexity.
+
+Execution instructions:
+-Go to folder Solution_1 (open terminal in current folder and execute cd Solution_1)
+-Run Resource_Allocation.py.
+-Enter the input file names as Input or Inputx.
+-Where x varies from 1 to 8
+-If you wish to enter any input files then you must create your own input file inside the input directory.
+-Pass the name of the file only as the input to the program.
+-eg:File name->Input1.txt
+-Input to program is Input1
+
+Question 2:
+	-There is a line of 2n counters with no spaces between adjacent counters. The
+counters alternate between black and white: B W B W . . . B W. The objective
+is to rearrange the counters so that all the white counters are before all the
+black ones with no gaps between the counters: WW. . .WBB. . . B. The
+counters are to be moved in pairs; on each move, a pair of adjacent counters
+can be moved, without changing their order, into a vacant location. Design an
+algorithm that solves the problem in n moves for any n ≥ 3.
+
+
+Execution instructions:
+-Go to folder Solution_2 (open terminal in current folder and execute cd Solution_2)
+-Run the following commands:
+	make -f makefile.mk
+	./a.out
+	n          							//value of n (greater than or equal to three)
+
+Question 3:
+	-There are 4 women who want to cross a bridge. They all begin on the same
+side. You have 17 minutes to get all of them across to the other side. It is
+night. There is one flashlight. A maximum of two people can cross at one time.
+Any party who crosses, either 1 or 2 people, must have the flashlight with
+them. The flashlight must be walked back and forth, it cannot be thrown, etc.
+Each woman walks at a different speed. A pair must walk together at the rate
+of the slower woman. Crossing times taken by the 4 women are 1, 2, 5, 1nd
+10 minutes.
+
+Execution instructions:
+-Go to folder Solution_3 (open terminal in current folder and execute cd Solution_3)
+-Run the following commands:
+	make -f makefile.mk
+	./a.out
+
+Question 4:
+	-Analyze quick sort for various methods of partitioning.
+
+Solution_4
+-Open Input Folder and use Input_Generator.py to create a new input file.
+-You have 4 optionns-:
+	+Generate inputs of any size ,give a file name and your input is generated in the appropriate file in a random order.
+	+Generate inputs of any size ,give a file name and your input is generated in the appropriate file in Ascending order.
+	+Generate inputs of any size ,give a file name and your input is generated in the appropriate file in descending order.
+	+Create your own input mentioning size.
+
+Execution instructions:
+-Go to folder Solution_4 (open terminal in current folder and execute cd Solution_4)
+-Once you generate the input run Sort.c
+-Give the input as Input/InputFilename.txt
+-Your Output file name for each method of partitioning as Output/OutputFileName.txt
+-OutputFile consists of sorted elements and time taken for execution.
+-First output file name is for Lomuto partition.
+-Second Output file name is for Lomuto partition with randomized pivot.
+-Third Output file name is for Hoare partition with randomized pivot. 
+
+

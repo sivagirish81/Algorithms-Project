@@ -109,3 +109,5 @@ Approach:
 
 	We have 2 solutions to this problem. 
 
+Time complexity:
+	Worst case is O(n!).
